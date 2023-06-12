@@ -22,11 +22,9 @@ class FileController extends Controller
 
             'files' => 'required',
 
-            'files.*' => 'required|mimes:pdf,xlx,csv|max:2048',
+            'files.*' => 'required|mimes:jpeg,jpg,png',
 
         ]);
-
-
 
         $files = [];
 
@@ -48,13 +46,10 @@ class FileController extends Controller
         }
 
 
-
         foreach ($files as $key => $file) {
 
             File::create($file);
         }
-
-
 
         return back()
 
