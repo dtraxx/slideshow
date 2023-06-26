@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.register');
 });
 
 Route::middleware([
@@ -40,5 +40,7 @@ Route::controller(PhotoController ::class)->group(function(){
     Route::post('file-upload', 'store')->name('file.store');
 
     Route::delete('photo.delete/{id}', 'delete')->name('photo.delete');
+
+    Route::get('carousel', 'showCarousel')->name('carousel-show');
 });
 

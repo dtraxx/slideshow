@@ -21,6 +21,9 @@
                     <x-nav-link href="{{ route('index') }}">
                         {{ 'Show uploads' }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('carousel-show') }}">
+                        {{ 'Show slideshow' }}
+                    </x-nav-link>
                 </div>
             </div>
 

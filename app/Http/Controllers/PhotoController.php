@@ -6,14 +6,19 @@ use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Spatie\Permission\Models\Role;
 class PhotoController extends Controller
 {
     public function index()
     {
-        $photos = Photo::all()
-            ->where('user_id', '=', Auth::id());
-
+        $user = Auth::user();
+        //$bouncer = app(Bouncer::class);
+        if ($user->hasRole('admin')){
+            $photos = Photo::all();
+        } else {
+            $photos = Photo::all()
+                ->where('user_id', '=', Auth::id());
+        }
         return view('upload-index', compact('photos'));
     }
 
@@ -46,5 +51,12 @@ class PhotoController extends Controller
         Photo::destroy($id);
         return redirect()->route('index')
             ->with('success', 'Photo successfully deleted');
+    }
+
+    public function showCarousel()
+    {
+        $photos = Photo::all();
+        return view('carousel', compact('photos'));
+
     }
 }

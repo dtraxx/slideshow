@@ -21,11 +21,16 @@
                 <th scope="col" class="px-6 py-3">
                     image
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Caption
-                </th>
+                @role('admin')
+                    <th scope="col" class="px-6 py-3">
+                        user
+                    </th>
+                @endrole
                 <th scope="col" class="px-6 py-3">
                     filename
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    uploaded
                 </th>
                 <th scope="col" class="px-6 py-3">
                     delete
@@ -40,11 +45,19 @@
                         <img class="h-20" src="{{asset($photo->path)}}" alt="{{$photo->caption}}">
                         </a>
                     </th>
-                    <td class="px-6 py-4">
-                        {{$photo->caption}}
-                    </td>
+                    @role('admin')
+                        <td class="px-6 py-4">
+                            @php
+                                $user = \App\Models\User::find($photo->user_id);
+                            @endphp
+                            {{ $user->name }}
+                        </td>
+                    @endrole
                     <td class="px-6 py-4">
                         {{$photo->filename}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{$photo->created_at->diffForHumans()}}
                     </td>
                     <td class="px-6 py-4">
                         <form action="{{ route('photo.delete', ['id' => $photo->id]) }}" method="POST" id="delete-form">
