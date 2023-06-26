@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
-   protected $fillable =[
+    /**
+     * @var mixed|string
+     */
+    protected $fillable =[
        'filename',
        'caption',
-       'user_id'
+       'user_id',
+        'path'
    ];
 }

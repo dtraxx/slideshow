@@ -5,33 +5,46 @@ namespace App\Http\Controllers;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
     public function index()
     {
-        $photos = Photo::all();
+        $photos = Photo::all()
+            ->where('user_id', '=', Auth::id());
 
-        return view('photos.index', compact('photos'));
+        return view('upload-index', compact('photos'));
     }
 
     public function store(Request $request)
     {
+
         $request->validate([
-            'photo' => 'required|image', // Adjust the validation rules as per your requirements
+            'files.*' => 'required|image',
             'caption' => 'nullable|string|max:255',
         ]);
 
-        $image = $request->file('photo');
-        $filename = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('photos'), $filename);
+        $images = $request->file('files');
 
-        Photo::create([
-            'filename' => $filename,
-            'caption' => $request->caption,
-            'user_id' => Auth::user()->id,
-        ]);
+        foreach ($images as $image) {
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('photos'),$filename);
+            $photo = new Photo();
+            $photo->filename = $filename;
+            $photo->user_id = Auth::id();
+            $photo->path = "photos/" . $filename;
+            $photo->save();
+        }
+        return redirect()->route('uploader')
+            ->with('success', 'Photos uploaded successfully.');
+    }
 
-        return redirect()->route('uploader')->with('success', 'Photo uploaded successfully.');
+    public function delete($id)
+    {
+        Storage::delete("photos/" . Photo::find($id)->filename);
+        Photo::destroy($id);
+        return redirect()->route('index')
+            ->with('success', 'Photo successfully deleted');
     }
 }

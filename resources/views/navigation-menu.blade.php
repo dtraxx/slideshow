@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('uploader') }}">
                         {{ 'Uploader' }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('index') }}">
+                        {{ 'Show uploads' }}
+                    </x-nav-link>
                 </div>
             </div>
 

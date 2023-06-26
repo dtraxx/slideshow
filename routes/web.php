@@ -33,13 +33,12 @@ Route::get('uploader', function (){
     return view('uploader');
 })->name('uploader');
 
-Route::post('/photos', [PhotoController::class, 'store'])->name('photos.store');
+Route::controller(PhotoController ::class)->group(function(){
 
-Route::controller(FileController::class)->group(function(){
-
-    Route::get('file-upload', 'index');
+    Route::get('photo-index', 'index')->name('index');
 
     Route::post('file-upload', 'store')->name('file.store');
 
+    Route::delete('photo.delete/{id}', 'delete')->name('photo.delete');
 });
 
