@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,17 +34,21 @@ class VideoController extends Controller
 
         $videos = $request->file('files');
 
-        foreach ($videos as $video) {
-            $filename = time() . '_' . $video->getClientOriginalName();
-            $video->move(public_path('videos'),$filename);
-            $video = new video();
-            $video->filename = $filename;
-            $video->user_id = Auth::id();
-            $video->path = "videos/" . $filename;
-            $video->save();
+        try {
+            foreach ($videos as $video) {
+                $filename = time() . '_' . $video->getClientOriginalName();
+                $video->move(public_path('videos'),$filename);
+                $video = new video();
+                $video->filename = $filename;
+                $video->user_id = Auth::id();
+                $video->path = "videos/" . $filename;
+                $video->save();
+            }
+            return redirect()->route('uploader')
+                ->with('success', 'videos uploaded successfully.');        } catch (PostTooLargeException $e) {
+            return back()->with('error', 'The video size exceeds the maximum allowed limit.');
         }
-        return redirect()->route('uploader')
-            ->with('success', 'videos uploaded successfully.');
+
     }
 
     public function show(Video $video)

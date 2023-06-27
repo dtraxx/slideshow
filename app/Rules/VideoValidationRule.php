@@ -14,9 +14,6 @@ class VideoValidationRule implements ValidationRule
 
     public function passes($attribute, $value)
     {
-        // Implement your video validation logic here
-        // Return true if the validation passes, false otherwise
-        // Example: Validate if the file has a video MIME type
         return $value->getClientMimeType() === 'video/mp4';
     }
 

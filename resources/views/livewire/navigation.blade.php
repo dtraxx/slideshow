@@ -4,13 +4,13 @@
             <img src="{{asset('img/under_new_management.png')}}" class="h-16 mr-3" alt="Flowbite Logo" />
         </a>
         <div class="flex items-center md:order-2">
-            <button type="button" class="flex mr-3 text-sm   rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <button type="button" class="bg-white p-2 flex mr-3 text-sm   rounded-full md:mr-0 focus:ring-1 focus:ring-white dark:focus:ring-white" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                 {{Auth::user()->name}}
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{Auth::user()->email}}</span>
+                    <span class="block text-sm  text-blue-500 truncate dark:text-white">{{Auth::user()->email}}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
@@ -20,7 +20,7 @@
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
 
-                            <x-dropdown-link href="{{ route('logout') }}"
+                            <x-dropdown-link class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" href="{{ route('logout') }}"
                                              @click.prevent="$root.submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -41,15 +41,19 @@
                 <li>
                     <a href="{{route('uploader')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Photo uploader</a>
                 </li>
+                <!--
                 <li>
                     <a href="{{route('video-uploader')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Video uploader</a>
                 </li>
+                -->
                 <li>
                     <a href="{{route('index')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Photos</a>
                 </li>
+                <!--
                 <li>
                     <a href="{{route('video-index')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Video's </a>
                 </li>
+                -->
                 <li>
                     <a href="{{route('carousel-show')}}" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Slideshow</a>
                 </li>

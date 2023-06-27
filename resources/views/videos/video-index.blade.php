@@ -1,8 +1,8 @@
 @extends('layouts.dash')
 @section('content')
     @if($videos->isNotEmpty())
-        <div class="">
             @foreach($videos as $video)
+                <div class="p-4">
                 <div class="flex justify-center items-center">
                     <video
                         id="{{$video->id}}"
@@ -23,8 +23,8 @@
                         </p>
                     </video>
                 </div>
+                </div>
             @endforeach
-        </div>
     @else
         <p class="p-16">No video's yet!</p>
     @endif
