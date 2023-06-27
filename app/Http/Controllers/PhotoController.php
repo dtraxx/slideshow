@@ -12,7 +12,6 @@ class PhotoController extends Controller
     public function index()
     {
         $user = Auth::user();
-        //$bouncer = app(Bouncer::class);
         if ($user->hasRole('admin')){
             $photos = Photo::all();
         } else {
@@ -42,7 +41,7 @@ class PhotoController extends Controller
             $photo->save();
         }
         return redirect()->route('uploader')
-            ->with('success', 'Photos uploaded successfully.');
+            ->with('success', 'Photo(s) uploaded successfully.');
     }
 
     public function delete($id)

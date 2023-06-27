@@ -16,7 +16,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
         <!-- Styles -->
         @livewireStyles
     </head>
@@ -42,7 +42,7 @@
         </div>
 
         @stack('modals')
-
+        <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
         @livewireScripts
     </body>
 </html>
