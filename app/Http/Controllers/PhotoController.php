@@ -56,6 +56,10 @@ class PhotoController extends Controller
     {
         $photos = Photo::all();
         return view('carousel', compact('photos'));
+    }
+
+    public function downloadZip()
+    {
 
     }
 }

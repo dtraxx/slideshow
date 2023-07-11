@@ -32,6 +32,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'Rubenz@rubenz.be',
             'password' => Hash::make('Rubenz')
         ]);
+        $jojo = User::create([
+            'name' => 'Jojo',
+            'email' => 'jovext@gmail.com',
+            'password' => Hash::make('Rubenz')
+        ]);
        /* $bouncer = app(Bouncer::class);
         $admin = $bouncer->role()->firstOrCreate([
             'name' => 'admin',
@@ -45,6 +50,7 @@ class DatabaseSeeder extends Seeder
         //$bouncer->assign('admin')->to($steven);
         $steven->assignRole('admin');
         $ruben->assignRole('admin');
+        $jojo->assignRole('admin');
 
     }
 }
