@@ -32,24 +32,26 @@ class PhotoController extends Controller
         $images = $request->file('files');
 
         foreach ($images as $image) {
-            $filename = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('photos'),$filename);
+            $path = Storage::disk('local')->put('photos', $image);
+            //$filename = time() . '_' . $image->getClientOriginalName();;
+            //$image->move(public_path('photos'),$filename);
             $photo = new Photo();
-            $photo->filename = $filename;
+            $photo->filename = substr($path, 7,strlen($path));
             $photo->user_id = Auth::id();
-            $photo->path = "photos/" . $filename;
+            $photo->path = $path;
             $photo->save();
+
         }
         return redirect()->route('uploader')
-            ->with('success', 'Photo(s) uploaded successfully.');
+            ->with('success', "Foto's succesvol verstuurd.");
     }
 
     public function delete($id)
     {
-        Storage::delete("photos/" . Photo::find($id)->filename);
+        Storage::delete("photos" . Photo::find($id)->filename);
         Photo::destroy($id);
         return redirect()->route('index')
-            ->with('success', 'Photo successfully deleted');
+            ->with('success', 'Photo succesvol verwijderd!');
     }
 
     public function showCarousel()
