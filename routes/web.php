@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FileController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('auth.register');
-})->name('home');
+})->name('home');*/
+
+Route::get('/', function (){
+    return view('auth.register');
+});
 
 Route::middleware([
     'auth:sanctum',

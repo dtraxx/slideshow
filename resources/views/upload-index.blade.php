@@ -42,10 +42,11 @@
                 @foreach($photos as $photo)
                     <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{asset($photo->path)}}">
-                                <img class="h-20" src="{{'storage/'.$photo->filename}}" alt="{{$photo->filename}}">
+                            <a href="{{asset("storage/photos/Vaj4aDKRzcg7TD54otSwAUl9xht6UohcuCNBG6vW.jpg")}}">
+                                <img class="h-20" src="{{url('storage/'.$photo->filename)}}" alt="{{$photo->filename}}">
                             </a>
                         </th>
+                        {{asset('photos/Vaj4aDKRzcg7TD54otSwAUl9xht6UohcuCNBG6vW.jpg')}}
                         @role('admin')
                         <td class="px-6 py-4">
                             @php
