@@ -32,7 +32,7 @@ class PhotoController extends Controller
         $images = $request->file('files');
 
         foreach ($images as $image) {
-            $path = Storage::disk('local')->put('public/photos', $image);
+            $path = Storage::disk('local')->put('photos', $image);
             //$filename = time() . '_' . $image->getClientOriginalName();;
             //$image->move(public_path('photos'),$filename);
             $photo = new Photo();

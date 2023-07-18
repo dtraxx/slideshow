@@ -27,6 +27,6 @@
             </div>
         </div>
     @else
-        <p class="p-4">Oeps.. Nog niets weer te geven. Gelieve foto's op te laden?</p>
+        <p class="p-16">Oeps.. Nog niets weer te geven. Gelieve foto's op te laden?</p>
     @endif
 @endsection

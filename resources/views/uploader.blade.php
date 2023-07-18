@@ -5,7 +5,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <div class="container">
+    <div class="container p-16">
         <h1 class="text-2xl font-extrabold dark:text-white mb-4">Upload foto's</h1>
         <!-- Display validation errors if present -->
         @if ($errors->any())
