@@ -1,15 +1,14 @@
-@extends('layouts.dash')
-@section('content')
-    @if($photos->isNotEmpty())
+<?php $__env->startSection('content'); ?>
+    <?php if($photos->isNotEmpty()): ?>
         <div class="w-full">
             <div id="default-carousel" class="relative w-full  container" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    @foreach($photos as $photo)
+                    <?php $__currentLoopData = $photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $photo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="hidden duration-700 ease-in-out object-contain" data-carousel-item>
-                            <img src="{{asset($photo->path)}}" class="object-contain absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <img src="<?php echo e(asset($photo->path)); ?>" class="object-contain absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <!-- Slider controls -->
                 <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -26,7 +25,9 @@
                 </button>
             </div>
         </div>
-    @else
+    <?php else: ?>
         <p class="p-4">Oeps.. Nog niets weer te geven. Gelieve foto's op te laden?</p>
-    @endif
-@endsection
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.dash', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/carousel.blade.php ENDPATH**/ ?>

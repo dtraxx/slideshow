@@ -6,3 +6,4 @@
     </div>
 </footer>
 
+<?php /**PATH /var/www/html/resources/views/layouts/footer.blade.php ENDPATH**/ ?>
