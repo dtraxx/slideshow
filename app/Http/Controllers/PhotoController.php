@@ -59,13 +59,13 @@ class PhotoController extends Controller
     public function showCarousel()
     {
         $photos = Photo::all();
-        return view('fullscreen-carousel', compact('photos'));
+        return view('carousel', compact('photos'));
     }
 
     public function showCarouselFull()
     {
         $photos = Photo::all();
-        return view('fullscreen-carousel', compact('photos'));
+        return view('layouts.carousel', compact('photos'));
 
     }
 }

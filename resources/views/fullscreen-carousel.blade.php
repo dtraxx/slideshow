@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,55 +12,58 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Element -->
-    <link
-        rel="stylesheet"
-        href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"
-    />
-    <!-- Import Vue 3 -->
-    <script src="//cdn.jsdelivr.net/npm/vue@3"></script>
-    <!-- Import component library -->
-    <script src="//cdn.jsdelivr.net/npm/element-plus"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
 </head>
 <body>
-<divv class="container-xl">
-    @if(!$photos->isEmpty())
-        <template>
-            <el-carousel :interval="4000" type="card" height="200px">
-                <el-carousel-item v-for="item in 6" :key="item">
+<!-- Carousel Container -->
+<div class="flex items-center justify-center h-screen">
+    <!-- Carousel Wrapper -->
+    <div class="w-full">
+        <!-- Glide Carousel Slides -->
+        <div class="glide">
+            <!-- Glide Track -->
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
                     @foreach($photos as $photo)
-                        <img src="{{asset($photo->path)}}">
+                        <li class="glide__slide randomize">
+                            <img src="{{asset($photo->path)}}" alt="Slide 1" class="w-full h-full object-cover">
+                        </li>
+
                     @endforeach
-                </el-carousel-item>
-            </el-carousel>
-        </template>
-
-        <style scoped>
-            .el-carousel__item h3 {
-                color: #475669;
-                opacity: 0.75;
-                line-height: 200px;
-                margin: 0;
-                text-align: center;
-            }
-
-            .el-carousel__item:nth-child(2n) {
-                background-color: #99a9bf;
-            }
-
-            .el-carousel__item:nth-child(2n + 1) {
-                background-color: #d3dce6;
-            }
-        </style>
-    @else
-        <div class="container">
-            <h1 class="display-6 mt-6">Nog geen foto's.</h1>
+                </ul>
+            </div>
         </div>
-    @endif
-</divv>
-@livewireScripts
+    </div>
+</div>
+<script src="https://unpkg.com/@glidejs/glide@3.6.0/dist/glide.js"></script>
+<!-- JavaScript for Glide Carousel -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Glide('.glide', {
+            type: 'carousel',
+            autoplay: 5000, // Change slide every 5 seconds
+            hoverpause: true, // Pause autoplay on hover
+            animationDuration: 1000, // Slide animation duration in milliseconds
+        }).mount();
+
+        var parentDiv = document.body;
+        var divs = parentDiv.getElementsByClassName('randomize');
+        var divsArray = Array.prototype.slice.call(divs);
+
+        divsArray.sort(function() {
+            return 0.5 - Math.random();
+        });
+
+        for (var i = 0; i < divsArray.length; i++) {
+            parentDiv.appendChild(divsArray[i]);
+        }
+    });
+</script>
 </body>
 </html>
