@@ -42,21 +42,15 @@ Route::get('video-uploader', function (){
 })->name('video-uploader');
 
 Route::controller(PhotoController ::class)->group(function(){
-
     Route::get('photo-index', 'index')->name('index');
-
     Route::post('file-upload', 'store')->name('file.store');
-
     Route::delete('photo.delete/{id}', 'delete')->name('photo.delete');
-
     Route::get('carousel', 'showCarousel')->name('carousel-show');
+    Route::get('fullcarousel', 'showCarouselFull')->name('carousel-full');
 });
 
 Route::controller(VideoController ::class)->group(function(){
-
     Route::get('video-index', 'index')->name('video-index');
-
     Route::post('video-upload', 'store')->name('video.store');
-
     Route::delete('video.delete/{id}', 'delete')->name('video.delete');
 });

@@ -33,13 +33,14 @@ class PhotoController extends Controller
 
         foreach ($images as $image) {
             //$path = Storage::disk('local')->put('photos', $image);
-            $filename = time() . '_' . $image->getClientOriginalName();;
-            //$image->move(public_path('photos'),$filename);
-            $image->storeAs('public/photos', $filename);
+            $filename = time() . '_' . $image->getClientOriginalName();
+            //dd($image->move(base_path('/public_html/photos'),$filename));
+            $image->move(base_path('/public_html/photos'),$filename);
+            //$image->storeAs('public/photos', $filename);
             $photo = new Photo();
             $photo->filename = $filename;//substr($path, 7,strlen($path));
             $photo->user_id = Auth::id();
-            $photo->path = 'test';//$path;
+            $photo->path = 'photos/'. $filename;
             $photo->save();
 
         }
@@ -58,11 +59,13 @@ class PhotoController extends Controller
     public function showCarousel()
     {
         $photos = Photo::all();
-        return view('carousel', compact('photos'));
+        return view('fullscreen-carousel', compact('photos'));
     }
 
-    public function downloadZip()
+    public function showCarouselFull()
     {
+        $photos = Photo::all();
+        return view('fullscreen-carousel', compact('photos'));
 
     }
 }

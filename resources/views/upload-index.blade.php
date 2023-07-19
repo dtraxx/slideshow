@@ -28,9 +28,6 @@
                     </th>
                     @endrole
                     <th scope="col" class="px-6 py-3">
-                        Bestandsnaam
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         uploaded
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -54,9 +51,6 @@
                             {{ $user->name }}
                         </td>
                         @endrole
-                        <td class="px-6 py-4">
-                            {{$photo->filename}}
-                        </td>
                         <td class="px-6 py-4">
                             {{$photo->created_at->diffForHumans()}}
                         </td>

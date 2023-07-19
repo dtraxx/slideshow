@@ -24,6 +24,9 @@
                     <x-nav-link href="{{ route('carousel-show') }}">
                         {{ 'Show slideshow' }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('carousel-full') }}">
+                        {{ 'Fullscreen slideshow' }}
+                    </x-nav-link>
                 </div>
                 -->
             </div>
