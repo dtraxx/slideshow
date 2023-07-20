@@ -32,24 +32,28 @@ class PhotoController extends Controller
         $images = $request->file('files');
 
         foreach ($images as $image) {
+            //$path = Storage::disk('local')->put('photos', $image);
             $filename = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('photos'),$filename);
+            //dd($image->move(base_path('/public_html/photos'),$filename));
+            $image->move(base_path('/public_html/photos'),$filename);
+            //$image->storeAs('public/photos', $filename);
             $photo = new Photo();
-            $photo->filename = $filename;
+            $photo->filename = $filename;//substr($path, 7,strlen($path));
             $photo->user_id = Auth::id();
-            $photo->path = "photos/" . $filename;
+            $photo->path = 'photos/'. $filename;
             $photo->save();
+
         }
         return redirect()->route('uploader')
-            ->with('success', 'Photo(s) uploaded successfully.');
+            ->with('success', "Foto's succesvol verstuurd.");
     }
 
     public function delete($id)
     {
-        Storage::delete("photos/" . Photo::find($id)->filename);
+        Storage::delete("photos" . Photo::find($id)->filename);
         Photo::destroy($id);
         return redirect()->route('index')
-            ->with('success', 'Photo successfully deleted');
+            ->with('success', 'Photo succesvol verwijderd!');
     }
 
     public function showCarousel()
@@ -58,8 +62,10 @@ class PhotoController extends Controller
         return view('carousel', compact('photos'));
     }
 
-    public function downloadZip()
+    public function showCarouselFull()
     {
+        $photos = Photo::all();
+        return view('layouts.carousel', compact('photos'));
 
     }
 }

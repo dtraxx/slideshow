@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: Pacifico-Regular;
+    src: url("../../public/fonts/Pacifico-Regular.ttf");
+}
+
+.font-custom {
+    font-family: 'Pacifico-Regular', sans-serif;
+}
 
 [x-cloak] {
     display: none;

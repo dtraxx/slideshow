@@ -42,7 +42,6 @@
         </div>
 
         @stack('modals')
-        <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
         @livewireScripts
     </body>
 </html>

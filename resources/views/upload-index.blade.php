@@ -20,7 +20,7 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        image
+                        Afbeelding
                     </th>
                     @role('admin')
                     <th scope="col" class="px-6 py-3">
@@ -28,13 +28,10 @@
                     </th>
                     @endrole
                     <th scope="col" class="px-6 py-3">
-                        filename
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         uploaded
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        delete
+                        Verwijderen
                     </th>
                 </tr>
                 </thead>
@@ -42,8 +39,8 @@
                 @foreach($photos as $photo)
                     <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <a href="{{$photo->path}}">
-                                <img class="h-20" src="{{asset($photo->path)}}" alt="{{$photo->caption}}">
+                            <a href="{{asset($photo->path)}}">
+                                <img class="h-20" src="{{asset($photo->path)}}" alt="{{$photo->filename}}">
                             </a>
                         </th>
                         @role('admin')
@@ -54,9 +51,6 @@
                             {{ $user->name }}
                         </td>
                         @endrole
-                        <td class="px-6 py-4">
-                            {{$photo->filename}}
-                        </td>
                         <td class="px-6 py-4">
                             {{$photo->created_at->diffForHumans()}}
                         </td>
@@ -73,6 +67,6 @@
             </table>
         </div>
     @else
-        <p class="p-16">No photos yet!</p>
+        <p class="p-16">Nog geen foto's weer te geven!</p>
     @endif
 @endsection

@@ -15,6 +15,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                handwriting: ['Pacifico', '../../public/fonts/Pacifico-Regular.ttf']
             },
             spacing: {
                 px: '1px',
