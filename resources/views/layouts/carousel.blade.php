@@ -26,7 +26,7 @@
             <ul id="list" class="glide__slides ">
                 @foreach($photos as $photo)
                     <li class="glide__slide">
-                        <img onclick=randomize() src="{{asset($photo->path)}}" alt="Slide 1" class="w-full h-full object-cover">
+                        <img onclick=randomize() src="{{asset($photo->path)}}" alt="Slide 1" class="h-screen w-full object-cover">
                     </li>
                 @endforeach
             </ul>
@@ -45,7 +45,7 @@
             perView: 1, // Number of slides per view (1 means only one slide visible at a time)
             focusAt: 'center', // Focused slide position
             autoplay: 3000, // Change slide every 5 seconds
-            hoverpause: true, // Pause autoplay on hover
+            hoverpause: false, // Pause autoplay on hover
             animationDuration: 1000, // Slide animation duration in milliseconds
             peek: 0 // Space between slides
         }).mount();
