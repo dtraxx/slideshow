@@ -3,13 +3,14 @@
     @if($photos->isNotEmpty())
         <p class="p-6">Om te vergroten klik op de foto.
             <br>Om te downloaden rechter muisklik en kies opslaan als.</p>
+
         <div id="controls-carousel" class="relative w-full" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-               @foreach($photos as $photo)
+                @foreach($photos as $photo)
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <a href="{{$photo->path}}">
-                        <img src="{{$photo->path}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            <img src="{{$photo->path}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{$photo->filename}}">
                         </a>
                     </div>
                 @endforeach
@@ -32,6 +33,7 @@
         </span>
             </button>
         </div>
+
     @else
         <p class="p-16">Oeps.. Nog niets weer te geven. Gelieve foto's op te laden?</p>
     @endif

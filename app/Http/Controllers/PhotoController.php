@@ -45,7 +45,7 @@ class PhotoController extends Controller
 
         }
         return redirect()->route('uploader')
-            ->with('success', "Foto's succesvol verstuurd.");
+            ->with('success', "Foto('s) succesvol verstuurd.");
     }
 
     public function delete($id)
@@ -53,7 +53,7 @@ class PhotoController extends Controller
         Storage::delete("photos" . Photo::find($id)->filename);
         Photo::destroy($id);
         return redirect()->route('index')
-            ->with('success', 'Photo succesvol verwijderd!');
+            ->with('success', 'Foto succesvol verwijderd!');
     }
 
     public function showCarousel()

@@ -29,11 +29,11 @@ class DatabaseSeeder extends Seeder
 
         $ruben = User::create([
             'name' => 'Rubenz',
-            'email' => 'Rubenz@rubenz.be',
+            'email' => 'rubenvx@hotmail.com',
             'password' => Hash::make('Rubenz')
         ]);
         $jojo = User::create([
-            'name' => 'Jojo',
+            'name' => 'Jo',
             'email' => 'jovext@gmail.com',
             'password' => Hash::make('Rubenz')
         ]);

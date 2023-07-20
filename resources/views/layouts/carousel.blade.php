@@ -17,23 +17,27 @@
     </style>
 </head>
 <body >
-<!-- Carousel Container -->
-<div class="carousel-container">
-    <!-- Glide Carousel Slides -->
-    <div class="glide carousel-slide">
-        <!-- Glide Track -->
-        <div class="glide__track content-stretch" data-glide-el="track">
-            <ul id="list" class="glide__slides ">
-                @foreach($photos as $photo)
-                    <li class="glide__slide">
-                        <img onclick=randomize() src="{{asset($photo->path)}}" alt="Slide 1" class="h-screen w-full object-cover">
-                    </li>
-                @endforeach
-            </ul>
+@if(!$photos->isEmpty())
+    <div class="carousel-container">
+        <!-- Glide Carousel Slides -->
+        <div class="glide carousel-slide">
+            <!-- Glide Track -->
+            <div class="glide__track content-stretch" data-glide-el="track">
+                <ul id="list" class="glide__slides ">
+                    @foreach($photos as $photo)
+                        <li class="glide__slide">
+                            <img onclick=randomize() src="{{asset($photo->path)}}" alt="Slide 1" class="h-screen w-full object-cover">
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-
+@else
+    <div class="container justify-items-center">
+        <p class="p-16">Oeps.. Nog niets weer te geven. Gelieve foto's op te laden?</p>
+    </div>
+@endif
 <!-- Glide.js JavaScript CDN link -->
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
 <!-- JavaScript for Glide Carousel -->
@@ -49,7 +53,6 @@
             animationDuration: 1000, // Slide animation duration in milliseconds
             peek: 0 // Space between slides
         }).mount();
-        randomize()
     });
 
     function randomize(){
