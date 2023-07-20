@@ -68,6 +68,13 @@
             ul.appendChild(li);
         });
     };
+
+    function refreshPage() {
+        location.reload();
+        randomize();
+    }
+
+    setTimeout(refreshPage, 1800000);
 </script>
 </body>
 </html>

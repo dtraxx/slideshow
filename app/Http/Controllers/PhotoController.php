@@ -33,10 +33,11 @@ class PhotoController extends Controller
 
         foreach ($images as $image) {
             //$path = Storage::disk('local')->put('photos', $image);
+            //$image->move(base_path('/public_html/photos'),$filename);
+
             $filename = time() . '_' . $image->getClientOriginalName();
-            //dd($image->move(base_path('/public_html/photos'),$filename));
-            $image->move(base_path('/public_html/photos'),$filename);
             //$image->storeAs('public/photos', $filename);
+            $image->move(public_path('photos'),$filename);
             $photo = new Photo();
             $photo->filename = $filename;//substr($path, 7,strlen($path));
             $photo->user_id = Auth::id();
