@@ -3,7 +3,6 @@
     @if($photos->isNotEmpty())
         <p class="p-6">Om te vergroten klik op de foto.
             <br>Om te downloaden rechter muisklik en kies opslaan als.</p>
-
         <div id="controls-carousel" class="relative w-full" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
