@@ -58,7 +58,7 @@
                             <form action="{{ route('photo.delete', ['id' => $photo->id]) }}" method="POST" id="delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete</button>
+                                <button type="submit">Verwijder</button>
                             </form>
                         </td>
                     </tr>
