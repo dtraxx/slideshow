@@ -42,15 +42,15 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation')->html();
-} elseif ($_instance->childHasBeenRendered('vAzhWV5')) {
-    $componentId = $_instance->getRenderedChildComponentId('vAzhWV5');
-    $componentTag = $_instance->getRenderedChildComponentTagName('vAzhWV5');
+} elseif ($_instance->childHasBeenRendered('lWoN8wn')) {
+    $componentId = $_instance->getRenderedChildComponentId('lWoN8wn');
+    $componentTag = $_instance->getRenderedChildComponentTagName('lWoN8wn');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('vAzhWV5');
+    $_instance->preserveRenderedChild('lWoN8wn');
 } else {
     $response = \Livewire\Livewire::mount('navigation');
     $html = $response->html();
-    $_instance->logRenderedChild('vAzhWV5', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('lWoN8wn', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -73,7 +73,6 @@ echo $html;
         </div>
 
         <?php echo $__env->yieldPushContent('modals'); ?>
-        <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
         <?php echo \Livewire\Livewire::scripts(); ?>
 
     </body>
